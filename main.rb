@@ -50,8 +50,6 @@ class Main
     puts '13 - Exit'
   end
 
-  def exit; end
-
   # Define methods for each action here
   def list_books
     puts 'Listing all books...'
