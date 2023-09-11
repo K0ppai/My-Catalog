@@ -3,7 +3,7 @@ require 'date'
 class Item
   attr_accessor :archived
 
-  def initialize(genre, author, source, label, publish_date)
+  def initialize(genre = nil, author = nil, source = nil, label = nil, publish_date)
     @id = Random.rand(1..1000)
     @genre = genre
     @author = author
