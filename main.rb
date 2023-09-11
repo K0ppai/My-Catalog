@@ -1,13 +1,35 @@
+ACTIONS = {
+  1 => { method: :list_books },
+  2 => { method: :list_music_albums },
+  3 => { method: :list_movies },
+  4 => { method: :list_games },
+  5 => { method: :list_genres },
+  6 => { method: :list_labels },
+  7 => { method: :list_authors },
+  8 => { method: :list_sources },
+  9 => { method: :add_book },
+  10 => { method: :add_music_album },
+  11 => { method: :add_movie },
+  12 => { method: :add_game },
+  13 => { method: :exit_app }
+}.freeze
+
 class Main
   def run
     loop do
       display_options
       number = gets.chomp.to_i
       if number == 13
-        exit
+        puts 'Thank you for using this app'
         break
       end
-      execute(number)
+      action = ACTIONS[number]
+
+      if action
+        send(action[:method])
+      else
+        puts 'Enter a valid number'
+      end
     end
   end
 
@@ -28,39 +50,65 @@ class Main
     puts '13 - Exit'
   end
 
-  def exit
-    puts 'Thank you for using this app'
+  # Define methods for each action here
+  def list_books
+    puts 'Listing all books...'
+    # Implement the logic for listing books
   end
 
-  def execute(number)
-    case number
-    when 1
-      puts '1 - List all books'
-    when 2
-      puts '2 - List all music albums'
-    when 3
-      puts '3 - List all movies'
-    when 4
-      puts '4 - List of games'
-    when 5
-      puts '5 - List all genres'
-    when 6
-      puts '6 - List all labels'
-    when 7
-      puts '7 - List all authors'
-    when 8
-      puts '8 - List all sources'
-    when 9
-      puts '9 - Add a book'
-    when 10
-      puts '10 - Add a music album'
-    when 11
-      puts '11 - Add a movie'
-    when 12
-      puts '12 - Add a game'
-    else
-      puts 'Enter valid number'
-    end
+  def list_music_albums
+    puts 'Listing all music albums...'
+    # Implement the logic for listing music albums
+  end
+
+  def list_movies
+    puts 'Listing all movies...'
+    # Implement the logic for listing movies
+  end
+
+  def list_games
+    puts 'Listing all games...'
+    # Implement the logic for listing games
+  end
+
+  def list_genres
+    puts 'Listing all genres...'
+    # Implement the logic for listing genres
+  end
+
+  def list_labels
+    puts 'Listing all labels...'
+    # Implement the logic for listing labels
+  end
+
+  def list_authors
+    puts 'Listing all authors...'
+    # Implement the logic for listing authors
+  end
+
+  def list_sources
+    puts 'Listing all sources...'
+    # Implement the logic for listing sources
+  end
+
+  def add_book
+    puts 'Adding a book...'
+    # Implement the logic for adding a book
+  end
+
+  def add_music_album
+    puts 'Adding a music album...'
+    # Implement the logic for adding a music album
+  end
+
+  def add_movie
+    puts 'Adding a movie...'
+    # Implement the logic for adding a movie
+  end
+
+  def add_game
+    puts 'Adding a game...'
+    # Implement the logic for adding a game
   end
 end
 
