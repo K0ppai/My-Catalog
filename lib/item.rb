@@ -16,7 +16,7 @@ class Item
   def move_to_archive
     @archived = true if can_be_archived?
   end
-  
+
   def can_be_archived?
     current_year = Time.now.year
     published_year = @publish_date.year
