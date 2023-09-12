@@ -13,6 +13,5 @@ class LabelManager
   def add_label(title, color)
     new_label = Label.new(title, color)
     @labels << new_label
-    puts "Label created successfully! #{new_label.title}, Color: #{new_label.color}"
   end
 end
