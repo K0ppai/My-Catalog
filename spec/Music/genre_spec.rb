@@ -4,6 +4,7 @@ describe Genre do
   before :all do
     @genre = Genre.new('abc')
     @item = Item.new('2000-12-12')
+    @genre.add_item(@item)
   end
   
   context 'When creating Genre class' do
@@ -18,12 +19,11 @@ describe Genre do
     end
 
     it "should add the input item to the collection of items" do
-      @genre.add_item(@item)
       expect(@genre.items[0]).to be @item 
     end
 
     it "should add self as a property of the item object" do
-      
+      expect(@item.genre).to be @genre  
     end
   end
 end

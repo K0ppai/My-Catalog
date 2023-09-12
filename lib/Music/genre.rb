@@ -12,6 +12,6 @@ class Genre
 
   def add_item(item)
     @items << item if item.instance_of?(Item)
-    item.genre = 
+    item.genre = self
   end
 end
