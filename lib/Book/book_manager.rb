@@ -1,8 +1,6 @@
 require_relative 'book'
 require_relative 'label_manager'
 
-
-
 class BookManager
   def initialize()
     @books = []

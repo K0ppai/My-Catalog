@@ -4,7 +4,6 @@ class Item
   attr_accessor :archived, :publish_date
   attr_reader :genre, :label
 
-
   def initialize(publish_date)
     @id = Random.rand(1..1000)
     @genre = nil
