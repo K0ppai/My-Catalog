@@ -3,17 +3,19 @@ require_relative 'label_manager'
 
 
 
-class Book_Manager
+class BookManager
   def initialize()
     @books = []
-    @labels = Label_Manager.new
+    @labels = LabelManager.new
   end
 
   def list_all_books
     if @books == []
       puts 'No Books Yet, Create one first'
     else
-      @books.map {|book| puts "Publish date: #{book.publish_date}, Publisher: #{book.publisher}, Cover State: #{book.cover_state}"}
+      @books.map do |book|
+        puts "Publish date: #{book.publish_date}, Publisher: #{book.publisher}, Cover State: #{book.cover_state}"
+      end
     end
   end
 
@@ -28,5 +30,4 @@ class Book_Manager
   def list_all_labels
     @labels.list_labels
   end
-  
 end

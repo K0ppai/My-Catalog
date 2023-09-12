@@ -18,7 +18,7 @@ ACTIONS = {
 
 class Main
   def initialize
-    @book_manager = Book_Manager.new
+    @book_manager = BookManager.new
   end
 
   def run
@@ -102,13 +102,13 @@ class Main
   def add_book
     puts 'Great Choice, what is the state of the Book? [excellent/good/bad]'
     cover_state = gets.chomp
-    puts "When was it pubished? Enter a Date"
+    puts 'When was it pubished? Enter a Date'
     publish_date = gets.chomp
-    puts "Who was the publisher"
+    puts 'Who was the publisher'
     publisher = gets.chomp
-    puts "Tell us about the book in 1 word Eg. Gift/New/Antique/Rare/Ancient"
+    puts 'Tell us about the book in 1 word Eg. Gift/New/Antique/Rare/Ancient'
     title = gets.chomp
-    puts "Finally, what color label should it have?"
+    puts 'Finally, what color label should it have?'
     color = gets.chomp
     @book_manager.add_book(publish_date, publisher, cover_state, title, color)
     # Implement the logic for adding a book
