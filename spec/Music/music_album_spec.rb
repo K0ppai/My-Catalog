@@ -2,8 +2,7 @@ require_relative '../spec_helper'
 
 describe MusicAlbum do
   before :all do
-    @music_album = MusicAlbum.new('2000-12-23', true)
-    @can_be_archived = @music_album.can_be_archived?
+    @music_album = MusicAlbum.new('2000-1-23', true)
   end
 
   context 'When creating MusicAlbum class' do
@@ -14,7 +13,8 @@ describe MusicAlbum do
 
   context 'When implementing can_be_archived?() method' do
     it "should return true if parent's method returns true AND if on_spotify equals true" do
-      expect(@can_be_archived).to be true
+      can_be_archived = @music_album.can_be_archived?
+      expect(can_be_archived).to be true
     end
   end
 end
