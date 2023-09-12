@@ -3,5 +3,10 @@
     "Genre": "pop",
     "Is_On_Spotify": false,
     "Published_Date": "1212-12-12"
+  },
+  {
+    "Genre": "pop",
+    "Is_On_Spotify": true,
+    "Published_Date": "2020-09-09"
   }
 ]

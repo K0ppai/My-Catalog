@@ -2,6 +2,8 @@ require_relative '../game'
 require_relative 'author_manager'
 
 class GameManager
+  attr_reader :all_games
+
   def initialize
     @author_manager = AuthorManager.new
     @all_games = []
