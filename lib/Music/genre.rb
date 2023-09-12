@@ -8,4 +8,9 @@ class Genre
     @items = []
     @name = name
   end
+
+  def add_genre
+    
+  end
+  
 end
