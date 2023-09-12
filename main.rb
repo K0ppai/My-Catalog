@@ -1,7 +1,6 @@
 require_relative 'lib/Music/music_album_manager'
 require_relative 'lib/Game/Managers/game_manager'
 
-
 ACTIONS = {
   1 => { method: :list_books },
   2 => { method: :list_music_albums },
