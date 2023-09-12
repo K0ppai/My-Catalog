@@ -9,10 +9,6 @@ class MusicAlbum < Item
     @on_spotify = on_spotify
   end
 
-  def genre=(genre)
-    @genre = genre
-    genre.items << self unless genre.items.include?(self)
-  end
 
   def can_be_archived?
     parent_result = super
