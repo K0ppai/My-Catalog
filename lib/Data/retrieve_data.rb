@@ -1,9 +1,9 @@
-require "json"
-require_relative "../Music/music_album"
-require_relative "../Music/genre"
+require 'json'
+require_relative '../Music/music_album'
+require_relative '../Music/genre'
 
 class RetrieveData
-  def retrieve_all(game_manager, music_manager)
+  def retrieve_all(_game_manager, music_manager)
     retrieve_music_albums(music_manager.albums)
   end
 
@@ -16,8 +16,8 @@ class RetrieveData
     file = File.read(path)
     parsed_datas = JSON.parse(file)
     parsed_datas.map do |data|
-      music_album = MusicAlbum.new(data["Published_Date"], data["Is_On_Spotify"])
-      music_album.genre = Genre.new(data["Genre"])
+      music_album = MusicAlbum.new(data['Published_Date'], data['Is_On_Spotify'])
+      music_album.genre = Genre.new(data['Genre'])
       music_albums << music_album
     end
   end

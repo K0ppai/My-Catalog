@@ -1,7 +1,7 @@
 require 'json'
 
 class StoreData
-  def store_all(game_manager, music_manager)
+  def store_all(music_manager)
     store_music_albums(music_manager.albums)
   end
 

@@ -1,7 +1,7 @@
-require_relative "lib/Music/music_album_manager"
-require_relative "lib/Game/Managers/game_manager"
-require_relative "lib/Data/store_data"
-require_relative "lib/Data/retrieve_data"
+require_relative 'lib/Music/music_album_manager'
+require_relative 'lib/Game/Managers/game_manager'
+require_relative 'lib/Data/store_data'
+require_relative 'lib/Data/retrieve_data'
 
 ACTIONS = {
   1 => { method: :list_books },
@@ -13,7 +13,7 @@ ACTIONS = {
   7 => { method: :add_book },
   8 => { method: :add_music_album },
   9 => { method: :add_game },
-  10 => { method: :exit_app },
+  10 => { method: :exit_app }
 }.freeze
 
 class Main
@@ -31,8 +31,8 @@ class Main
       number = gets.chomp.to_i
       if number == 10
         @store_data.store_all(@game_manager, @music_album_manager)
-        puts "Saved Successfully!"
-        puts "Thank you for using this app"
+        puts 'Saved Successfully!'
+        puts 'Thank you for using this app'
         break
       end
       action = ACTIONS[number]
@@ -40,28 +40,28 @@ class Main
       if action
         send(action[:method])
       else
-        puts "Enter a valid number"
+        puts 'Enter a valid number'
       end
     end
   end
 
   def display_options
-    puts "Please choose an option by entering a number:"
-    puts "1 - List all books"
-    puts "2 - List all music albums"
-    puts "3 - List of games"
-    puts "4 - List all genres"
-    puts "5 - List all labels"
-    puts "6 - List all authors"
-    puts "7 - Add a book"
-    puts "8 - Add a music album"
-    puts "9 - Add a game"
-    puts "10 - Exit"
+    puts 'Please choose an option by entering a number:'
+    puts '1 - List all books'
+    puts '2 - List all music albums'
+    puts '3 - List of games'
+    puts '4 - List all genres'
+    puts '5 - List all labels'
+    puts '6 - List all authors'
+    puts '7 - Add a book'
+    puts '8 - Add a music album'
+    puts '9 - Add a game'
+    puts '10 - Exit'
   end
 
   # Define methods for each action here
   def list_books
-    puts "Listing all books..."
+    puts 'Listing all books...'
     # Implement the logic for listing books
   end
 
@@ -80,7 +80,7 @@ class Main
   end
 
   def list_labels
-    puts "Listing all labels..."
+    puts 'Listing all labels...'
     # Implement the logic for listing labels
   end
 
@@ -89,7 +89,7 @@ class Main
   end
 
   def add_book
-    puts "Adding a book..."
+    puts 'Adding a book...'
     # Implement the logic for adding a book
   end
 
@@ -99,20 +99,20 @@ class Main
   end
 
   def add_game
-    print "multiplayer [true/false]: "
+    print 'multiplayer [true/false]: '
     input = gets.chomp
-    multiplayer = input == "true"
-    print "published at [yy-mm-dd]: "
+    multiplayer = input == 'true'
+    print 'published at [yy-mm-dd]: '
     publish_date = gets.chomp
-    print "last played at [yy-mm-dd]: "
+    print 'last played at [yy-mm-dd]: '
     last_played_at = gets.chomp
-    puts "Add author of game"
-    print "First name: "
+    puts 'Add author of game'
+    print 'First name: '
     first_name = gets.chomp
-    print "Last name: "
+    print 'Last name: '
     last_name = gets.chomp
     @game_manager.add_game(multiplayer, last_played_at, publish_date, first_name, last_name)
-    puts "Game created successfully"
+    puts 'Game created successfully'
   end
 end
 
