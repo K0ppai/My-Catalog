@@ -1,4 +1,4 @@
-require_relative '../item.rb'
+require_relative '../item'
 
 class Book < Item
   def initialize(publish_date, publisher, cover_state)
@@ -9,6 +9,6 @@ class Book < Item
 
   def can_be_archived?
     parent = super
-    parent || @cover_state == "bad"
+    parent || @cover_state == 'bad'
   end
 end
