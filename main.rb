@@ -1,3 +1,5 @@
+require_relative 'lib/Music/music_album_manager'
+
 ACTIONS = {
   1 => { method: :list_books },
   2 => { method: :list_music_albums },
@@ -15,6 +17,10 @@ ACTIONS = {
 }.freeze
 
 class Main
+  def initialize
+    @music_album_manager = MusicAlbumManager.new
+  end
+
   def run
     loop do
       display_options
@@ -58,6 +64,7 @@ class Main
 
   def list_music_albums
     puts 'Listing all music albums...'
+    @music_album_manager.list_music_albums
     # Implement the logic for listing music albums
   end
 
@@ -73,6 +80,7 @@ class Main
 
   def list_genres
     puts 'Listing all genres...'
+    @music_album_manager.list_genres
     # Implement the logic for listing genres
   end
 
@@ -98,6 +106,7 @@ class Main
 
   def add_music_album
     puts 'Adding a music album...'
+    @music_album_manager.create_music_album
     # Implement the logic for adding a music album
   end
 
