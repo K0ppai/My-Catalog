@@ -6,6 +6,18 @@ class MusicAlbumManager
     @albums = []
   end
 
+  def list_music_albums
+    @albums.each_with_index do |album, index|
+      puts "Genre: #{album.genre.name}, Published Date:#{album.publish_date}, #{album.on_spotify ? "Available on Spotify" : "Not Available on Spotify"}"
+    end
+  end
+
+  def list_genres
+    @albums.each_with_index do |album, index|
+      puts "#{album.genre.name}"
+    end
+  end
+
   def create_music_album
     puts "When is it published? Enter data in [yy/mm/dd] format."
     publish_date = gets.chomp
