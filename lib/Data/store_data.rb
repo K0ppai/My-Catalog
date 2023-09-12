@@ -1,12 +1,12 @@
 require 'json'
 
 class StoreData
-  def store_all(game_manager)
+  def store_all(game_manager, music_manager)
     store_games(game_manager)
     store_music_albums(music_manager.albums)
   end
 
-  def store_games(game_manager, music_manager)
+  def store_games(game_manager)
     games = game_manager.all_games
     data = games.map do |game|
       { multiplayer: game.multiplayer, last_played_at: game.last_played_at, publish_date: game.publish_date,
@@ -15,7 +15,7 @@ class StoreData
     File.open(
       'lib/Data/JSON/games.json', 'w'
     ) do |file|
-      file.puts(data.to_json)
+      file.puts(JSON.pretty_generate(data))
     end
   end
  
