@@ -1,6 +1,10 @@
 require 'json'
 
 class StoreData
+  def store_all(game_manager, music_manager)
+    store_music_albums(music_manager.albums)
+  end
+
   def store_music_albums(albums)
     music_data = albums.map do |album|
       {
