@@ -1,5 +1,7 @@
 require_relative 'lib/Music/music_album_manager'
 require_relative 'lib/Game/Managers/game_manager'
+require_relative 'lib/Data/store_data'
+require_relative 'lib/Data/retrieve_data'
 
 ACTIONS = {
   1 => { method: :list_books },
@@ -18,13 +20,18 @@ class Main
   def initialize
     @music_album_manager = MusicAlbumManager.new
     @game_manager = GameManager.new
+    @store_data = StoreData.new
+    @retrieve_data = RetrieveData.new
   end
 
   def run
+    @retrieve_data.retrieve_all(@game_manager, @music_album_manager)
     loop do
       display_options
       number = gets.chomp.to_i
       if number == 10
+        @store_data.store_all(@game_manager, @music_album_manager)
+        puts 'Saved Successfully!'
         puts 'Thank you for using this app'
         break
       end
