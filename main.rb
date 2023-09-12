@@ -1,4 +1,4 @@
-require_relative './lib/Game/Managers/game_manager'
+require_relative 'lib/Game/Managers/game_manager'
 
 ACTIONS = {
   1 => { method: :list_books },
@@ -17,6 +17,7 @@ class Main
   def initialize
     @game_manager = GameManager.new
   end
+
   def run
     loop do
       display_options
@@ -91,7 +92,7 @@ class Main
   def add_game
     print 'multiplayer [true/false]: '
     input = gets.chomp
-    input == "true" ? multiplayer = true : multiplayer = false
+    multiplayer = input == 'true'
     print 'published at [yy-mm-dd]: '
     publish_date = gets.chomp
     print 'last played at [yy-mm-dd]: '
@@ -102,7 +103,7 @@ class Main
     print 'Last name: '
     last_name = gets.chomp
     @game_manager.add_game(multiplayer, last_played_at, publish_date, first_name, last_name)
-    puts "Game created successfully"
+    puts 'Game created successfully'
   end
 end
 

@@ -1,5 +1,5 @@
 require_relative '../game'
-require_relative './author_manager'
+require_relative 'author_manager'
 
 class GameManager
   def initialize
@@ -9,11 +9,11 @@ class GameManager
 
   def list_all_games
     @all_games.each do |game|
-      puts "Multiplayer: #{game.multiplayer}, published at: #{game.publish_date}, Last played at: #{game.last_played_at} "  
+      puts "Multiplayer: #{game.multiplayer}, published: #{game.publish_date}, Last played: #{game.last_played_at}"
     end
   end
 
-   def list_all_authors
+  def list_all_authors
     @author_manager.list_all_authors
   end
 
@@ -22,5 +22,4 @@ class GameManager
     @author_manager.add_author(game, first_name, last_name)
     @all_games << game
   end
-
 end
