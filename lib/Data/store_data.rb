@@ -18,4 +18,3 @@ class StoreData
     end
   end
 end
-
