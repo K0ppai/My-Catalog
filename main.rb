@@ -1,3 +1,5 @@
+require_relative 'lib/Book/book_manager'
+
 ACTIONS = {
   1 => { method: :list_books },
   2 => { method: :list_music_albums },
@@ -15,6 +17,10 @@ ACTIONS = {
 }.freeze
 
 class Main
+  def initialize
+    @book_manager = Book_Manager.new
+  end
+
   def run
     loop do
       display_options
@@ -52,7 +58,8 @@ class Main
 
   # Define methods for each action here
   def list_books
-    puts 'Listing all books...'
+    puts "Here's Our Book List"
+    @book_manager.list_all_books
     # Implement the logic for listing books
   end
 
@@ -77,7 +84,8 @@ class Main
   end
 
   def list_labels
-    puts 'Listing all labels...'
+    puts 'Here is the Labels List'
+    @book_manager.list_all_labels
     # Implement the logic for listing labels
   end
 
@@ -92,7 +100,17 @@ class Main
   end
 
   def add_book
-    puts 'Adding a book...'
+    puts 'Great Choice, what is the state of the Book? [excellent/good/bad]'
+    cover_state = gets.chomp
+    puts "When was it pubished? Enter a Date"
+    publish_date = gets.chomp
+    puts "Who was the publisher"
+    publisher = gets.chomp
+    puts "Tell us about the book in 1 word Eg. Gift/New/Antique/Rare/Ancient"
+    title = gets.chomp
+    puts "Finally, what color label should it have?"
+    color = gets.chomp
+    @book_manager.add_book(publish_date, publisher, cover_state, title, color)
     # Implement the logic for adding a book
   end
 

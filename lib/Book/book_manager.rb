@@ -1,25 +1,32 @@
-require_relative './book'
+require_relative 'book'
+require_relative 'label_manager'
+
+
 
 class Book_Manager
   def initialize()
     @books = []
-    @labels = []
+    @labels = Label_Manager.new
   end
 
   def list_all_books
     if @books == []
       puts 'No Books Yet, Create one first'
     else
-      @books.map {|book| puts "Publish date: #{book.publish_date},
-      Publisher: #{book.publisher}, Cover State: #{book.cover_state}"}
+      @books.map {|book| puts "Publish date: #{book.publish_date}, Publisher: #{book.publisher}, Cover State: #{book.cover_state}"}
     end
   end
 
-  def add_book(publish_date, publisher, cover_state)
+  def add_book(publish_date, publisher, cover_state, title, color)
     new_book = Book.new(publish_date, publisher, cover_state)
+    @labels.add_label(title, color)
     @books << new_book
-    puts "Book created successfully! Publish date: #{new_book.publish_date},
-    Publisher: #{new_book.publisher}, Cover State: #{new_book.cover_state}"
+    puts "Book created successfully!
+    Publish date: #{new_book.publish_date}, Publisher: #{new_book.publisher}, Cover State: #{new_book.cover_state}"
+  end
+
+  def list_all_labels
+    @labels.list_labels
   end
   
 end
