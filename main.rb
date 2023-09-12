@@ -25,13 +25,15 @@ class Main
   end
 
   def run
-    @retrieve_data.retrieve_all(@game_manager)
+
+    @retrieve_data.retrieve_all(@game_manager, @music_album_manager)
     loop do
       display_options
       number = gets.chomp.to_i
       if number == 10
+        @store_data.store_all(@game_manager, @music_album_manager)
+        puts 'Saved Successfully!'
         puts 'Thank you for using this app'
-        @store_data.store_all(@game_manager)
         break
       end
       action = ACTIONS[number]
