@@ -25,7 +25,6 @@ class Main
   end
 
   def run
-
     @retrieve_data.retrieve_all(@game_manager, @music_album_manager)
     loop do
       display_options

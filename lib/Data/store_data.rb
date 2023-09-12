@@ -18,7 +18,6 @@ class StoreData
       file.puts(JSON.pretty_generate(data))
     end
   end
- 
 
   def store_music_albums(albums)
     music_data = albums.map do |album|
@@ -30,5 +29,5 @@ class StoreData
     end
     json_data = JSON.pretty_generate(music_data)
     File.write('./lib/Data/JSON/music_albums.json', json_data)
-  end  
+  end
 end
