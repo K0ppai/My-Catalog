@@ -6,7 +6,7 @@ class StoreData
       {
         Genre: album.genre.name,
         Is_On_Spotify: album.on_spotify,
-        Published_Date: album.publish_date,
+        Published_Date: album.publish_date
       }
     end
     json_data = JSON.pretty_generate(music_data)

@@ -14,7 +14,7 @@ class MusicAlbumManager
       puts "Genre: #{album.genre.name}, Published Date:#{album.publish_date}, #{album.on_spotify ? 'Available on Spotify' : 'Not Available on Spotify'}"
     end
   end
-  
+
   def list_genres
     puts 'There is no genres yet.' if @albums.empty?
     @albums.each_with_index do |album, _index|
