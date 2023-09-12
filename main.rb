@@ -1,3 +1,4 @@
+require_relative 'lib/Music/music_album_manager'
 require_relative 'lib/Game/Managers/game_manager'
 
 ACTIONS = {
@@ -15,6 +16,7 @@ ACTIONS = {
 
 class Main
   def initialize
+    @music_album_manager = MusicAlbumManager.new
     @game_manager = GameManager.new
   end
 
@@ -57,7 +59,7 @@ class Main
   end
 
   def list_music_albums
-    puts 'Listing all music albums...'
+    @music_album_manager.list_music_albums
     # Implement the logic for listing music albums
   end
 
@@ -66,7 +68,7 @@ class Main
   end
 
   def list_genres
-    puts 'Listing all genres...'
+    @music_album_manager.list_genres
     # Implement the logic for listing genres
   end
 
@@ -85,7 +87,7 @@ class Main
   end
 
   def add_music_album
-    puts 'Adding a music album...'
+    @music_album_manager.create_music_album
     # Implement the logic for adding a music album
   end
 
