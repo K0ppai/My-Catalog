@@ -18,9 +18,9 @@ describe Genre do
 
   context 'When implementing add_item method' do
     it 'should associate an item with an author and add it to the author\'s items' do
-    expect(@item).to receive(:author=).with(@author)
-    @author.add_item(@item)
-    expect(@author.items).to include(@item)
-  end
+      expect(@item).to receive(:author=).with(@author)
+      @author.add_item(@item)
+      expect(@author.items).to include(@item)
+    end
   end
 end

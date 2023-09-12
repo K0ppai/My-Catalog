@@ -2,7 +2,7 @@ require_relative '../spec_helper'
 
 describe Game do
   before :all do
-    @game = Game.new(true, '2022-09-08' , '2010-12-23')
+    @game = Game.new(true, '2022-09-08', '2010-12-23')
   end
 
   context 'When creating game class instance' do
@@ -12,7 +12,7 @@ describe Game do
   end
 
   context 'When adding author to Game instance' do
-    it "should set the author and add the game to the author\'s items" do
+    it "should set the author and add the game to the author's items" do
       author = double('Author')
       allow(author).to receive(:items) { [@game] }
       @game.author = author
