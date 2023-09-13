@@ -65,8 +65,6 @@ class MusicAlbumManager
     puts "\e[35m"
     puts ' 🎉 Music Album Created Successfully! 🎮 🎶'
     puts "\e[34m"
-
-    puts "Music Album [Genre: \"#{music_album.genre.name.upcase}\", Published Date: #{music_album.publish_date}, On Spotify?: #{music_album.on_spotify ? 'Yes' : 'No'}] Created Successfully!"
   end
 
   def remove_album

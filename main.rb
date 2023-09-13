@@ -122,8 +122,8 @@ class Main
     puts 'Finally, what color label should it have?'
     color = gets.chomp
     @book_manager.add_book(publish_date, publisher, cover_state, title, color)
-    puts "\e[35m 🎉 Book created successfully! 📖 ✨
-    \e[37m Publish date: #{new_book.publish_date}, Publisher: #{new_book.publisher}, Cover State: #{new_book.cover_state}"
+    puts ""
+    puts "\e[35m 🎉 Book created successfully! 📖 ✨"
     puts "\e[34m"
   end
 
@@ -153,7 +153,6 @@ class Main
   def remove_music_album
     @music_album_manager.remove_album
   end
-end
 
   def exit_msg
     puts "\e[35m"

@@ -13,5 +13,10 @@
     "Genre": "abc",
     "Is_On_Spotify": true,
     "Published_Date": "2020-12-12"
+  },
+  {
+    "Genre": "abc",
+    "Is_On_Spotify": true,
+    "Published_Date": "2020-12-12"
   }
 ]

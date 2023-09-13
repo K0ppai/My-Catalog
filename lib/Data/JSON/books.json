@@ -19,5 +19,12 @@
     "cover_state": "excellent",
     "title": "new",
     "color": "black"
+  },
+  {
+    "publish_date": "2021-12-12",
+    "publisher": "abc",
+    "cover_state": "good",
+    "title": "gift",
+    "color": "abc"
   }
 ]
