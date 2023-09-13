@@ -18,16 +18,16 @@ class MusicAlbumManager
       puts "\e[35m Here is the Album List 🎶 📀"
       puts ''
       @albums.each_with_index do |album, index|
-      print "\e[37m #{index + 1}) "
-      puts "Genre: \"#{album.genre.name.upcase}\", Published Date:#{album.publish_date}, On Spotify?: #{album.on_spotify ? 'Yes' : 'No'}\e[34m"
+        print "\e[37m #{index + 1}) "
+        puts "Genre: \"#{album.genre.name.upcase}\", Published Date:#{album.publish_date}, On Spotify?: #{album.on_spotify ? 'Yes' : 'No'}\e[34m"
       end
     end
-    puts ""
+    puts ''
   end
 
   def list_genres
     if @albums == []
-     puts ''
+      puts ''
       puts "🎶 Oops! 😬 It seems we don't have genre yet "
       puts "But don't worry, you can create your own! ✨  🖋️"
       puts 'Go ahead and add a music and genre to your library 📀'

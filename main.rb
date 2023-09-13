@@ -47,7 +47,7 @@ class Main
       display_options(selected_option)
       number = gets.chomp.to_i
       selected_option = number
-      if number == 0
+      if number.zero?
         @store_data.store_all(@game_manager, @music_album_manager, @book_manager)
         exit_msg
         break
