@@ -9,18 +9,42 @@ class MusicAlbumManager
   end
 
   def list_music_albums
-    puts 'There is no albums yet.' if @albums.empty?
-    @albums.each_with_index do |album, _index|
-      puts "Genre: \"#{album.genre.name.upcase}\", Published Date:#{album.publish_date}, On Spotify?: #{album.on_spotify ? 'Yes' : 'No'}"
+    puts "\e[37m"
+    if @albums == []
+      puts "🎶 Oops! 😬 It seems we don't have albums yet "
+       puts "But don't worry, you can create your own! ✨  🖋️"
+      puts "Go ahead and add a music to your library 📀"
+       puts "\e[34m"
+    else 
+     puts "\e[35m"
+     puts 'Here is the Music List 🎶 📀'
+     puts ""
+       @albums.each_with_index do |album, _index|
+      puts "\e[37m Genre: \"#{album.genre.name.upcase}\", Published Date:#{album.publish_date}, On Spotify?: #{album.on_spotify ? 'Yes' : 'No'}"
     end
+     puts "\e[34m"
+    end
+
+   
   end
 
   def list_genres
-    puts 'There is no genres yet. Please create one.' if @albums.empty?
-    @albums.each_with_index do |album, index|
+  if @albums == []
+      puts "🎶 Oops! 😬 It seems we don't have genre yet "
+       puts "But don't worry, you can create your own! ✨  🖋️"
+      puts "Go ahead and add a music and genre to your library 📀"
+       puts "\e[34m"
+    else 
+     puts "\e[35m"
+     puts 'Here is the Genre List 🎶 📀'
+     puts "\e[37m"
+      @albums.each_with_index do |album, index|
       print "#{index}) "
       puts album.genre.name.upcase
     end
+    puts "\e[34m"
+    end
+    
   end
 
   def create_music_album
@@ -41,6 +65,8 @@ class MusicAlbumManager
     genre = Genre.new(genre_name)
     music_album.genre = genre
     @albums << music_album
-    puts 'Music Album Created Successfully!'
+     puts "\e[35m"
+    puts " 🎉 Music Album Created Successfully! 🎮 🎶"
+    puts "\e[34m"
   end
 end

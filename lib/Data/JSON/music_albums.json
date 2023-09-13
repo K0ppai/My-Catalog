@@ -8,5 +8,10 @@
     "Genre": "pop",
     "Is_On_Spotify": true,
     "Published_Date": "2020-09-09"
+  },
+  {
+    "Genre": "abc",
+    "Is_On_Spotify": true,
+    "Published_Date": "2020-12-12"
   }
 ]
