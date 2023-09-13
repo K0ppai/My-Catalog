@@ -39,6 +39,7 @@ class Main
   end
 
   def run
+<<<<<<<<< Temporary merge branch 1
     @retrieve_data.retrieve_all(@game_manager, @music_album_manager, @book_manager)
     selected_option = nil
     loop do
@@ -47,6 +48,7 @@ class Main
       number = gets.chomp.to_i
       selected_option = number
       if number == 10
+<<<<<<<<< Temporary merge branch 1
         @store_data.store_all(@game_manager, @music_album_manager, @book_manager)
         exit_msg
         break
