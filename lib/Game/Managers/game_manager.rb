@@ -10,22 +10,20 @@ class GameManager
   end
 
   def list_all_games
-   puts "\e[37m"
+    puts "\e[37m"
     if @all_games == []
       puts "🎮 Oops! 😬 It seems we don't have any games  "
-       puts "But don't worry, you can create your own! ✨  🖋️"
-      puts "Go ahead and add a game to your collection 🎮"
-       puts "\e[34m"
-    else 
-     puts "\e[35m"
-     puts 'Here is the Game List 🎮'
-     puts ""
+      puts "But don't worry, you can create your own! ✨  🖋️"
+      puts 'Go ahead and add a game to your collection 🎮'
+    else
+      puts "\e[35m"
+      puts 'Here is the Game List 🎮'
+      puts ''
       @all_games.each do |game|
-      puts "\e[37m Multiplayer: #{game.multiplayer}, published: #{game.publish_date}, Last played: #{game.last_played_at}\e[34m"
-     end
-     puts "\e[34m"
+        puts "\e[37m Multiplayer: #{game.multiplayer}, published: #{game.publish_date}, Last played: #{game.last_played_at}\e[34m"
+      end
     end
-    
+    puts "\e[34m"
   end
 
   def list_all_authors

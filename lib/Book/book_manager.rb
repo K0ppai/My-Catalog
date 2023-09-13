@@ -8,22 +8,20 @@ class BookManager
   end
 
   def list_all_books
-   puts "\e[37m"
+    puts "\e[37m"
     if @books == []
       puts "📚 Oops! 😬 It seems we don't have books "
-       puts "But don't worry, you can create your own! ✨  🖋️"
-      puts "Go ahead and add a book to your library 📖"
-       puts "\e[34m"
-    else 
-       puts "\e[35m"
-     puts 'Here is the Books List'
-     puts "\e[37m"
+      puts "But don't worry, you can create your own! ✨  🖋️"
+      puts 'Go ahead and add a book to your library 📖'
+    else
+      puts "\e[35m"
+      puts 'Here is the Books List'
+      puts "\e[37m"
       @books.map do |book|
         puts "Publish date: #{book.publish_date}, Publisher: #{book.publisher}, Cover State: #{book.cover_state}"
       end
-     puts "\e[34m"
     end
-   
+    puts "\e[34m"
   end
 
   def add_book(publish_date, publisher, cover_state, title, color)

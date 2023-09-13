@@ -6,13 +6,13 @@ require_relative 'lib/Data/retrieve_data'
 
 def display_header
   puts "\e[35m" # Set the text color to purple
-  puts "***********************************************************"
-  puts "  📚 🎶 🎮  Welcome to My-Catalog Console App  🎮 🎶 📚  "
-  puts "***********************************************************"
-  puts ""
-  puts "🌟 Get ready to 🌍 explore, 🕵️‍♂️ discover, and 🚀 have a blast! 🎉"
-  puts ""
-  puts "🤔 What would you like to do today? 🤖"
+  puts '***********************************************************'
+  puts '  📚 🎶 🎮  Welcome to My-Catalog Console App  🎮 🎶 📚  '
+  puts '***********************************************************'
+  puts ''
+  puts '🌟 Get ready to 🌍 explore, 🕵️‍♂️ discover, and 🚀 have a blast! 🎉'
+  puts ''
+  puts '🤔 What would you like to do today? 🤖'
   puts "\e[34m"
 end
 
@@ -42,21 +42,16 @@ class Main
     @retrieve_data.retrieve_all(@game_manager, @music_album_manager)
     selected_option = nil
     loop do
-      system('clear') 
+      system('clear')
       display_options(selected_option)
       number = gets.chomp.to_i
-      selected_option = number 
+      selected_option = number
       if number == 10
         @store_data.store_all(@game_manager, @music_album_manager)
-        puts "\e[35m"
-        puts '🎉 Thank you for exploring our library, music collection, and game center! 📚 🎶 🎮'
-        puts '🌟 We hope you had a fantastic time with us! 🌟'
-        puts '🚀 Come back soon for more bookish adventures, musical discoveries, and gaming thrills! 👋 🎉'
-        puts "\e[37m"
+        exit_msg
         break
       end
       action = ACTIONS[number]
-
       if action
         send(action[:method])
       else
@@ -65,34 +60,29 @@ class Main
     end
   end
 
- def display_options(selected_option)
-  options = [
-    '1️⃣   List all books 📚',
-    '2️⃣   List all music albums 🎶 📀',
-    '3️⃣   List of games 🎮',
-    '4️⃣   List all genres  🎵 🎶',
-    '5️⃣   List all labels 🏷️  📚',
-    '6️⃣   List all authors ✍️  📖',
-    '7️⃣   Add a book 📚 ✏️',
-    '8️⃣   Add a music album 🎶 📀 🎵',
-    '9️⃣   Add a game 🎮 🕹️',
-    '🔟  Exit 🚪 👋'
-  ]
-   
+  def display_options(selected_option)
+    options = [
+      '1️⃣   List all books 📚',
+      '2️⃣   List all music albums 🎶 📀',
+      '3️⃣   List of games 🎮',
+      '4️⃣   List all genres  🎵 🎶',
+      '5️⃣   List all labels 🏷️  📚',
+      '6️⃣   List all authors ✍️  📖',
+      '7️⃣   Add a book 📚 ✏️',
+      '8️⃣   Add a music album 🎶 📀 🎵',
+      '9️⃣   Add a game 🎮 🕹️',
+      '🔟  Exit 🚪 👋'
+    ]
 
-  options.each_with_index do |option, index|
-    if (index + 1) == selected_option
-      puts "\e[34m👉 #{option}" 
-    else
-      puts option
+    options.each_with_index do |option, index|
+      if (index + 1) == selected_option
+        puts "\e[34m👉 #{option}"
+      else
+        puts option
+      end
     end
+    print "\e[37mEnter Code: "
   end
-  puts "\e[37m"
-  print "Enter Code: "
-end
-
-   
-
 
   def list_books
     @book_manager.list_all_books
@@ -151,8 +141,15 @@ end
     last_name = gets.chomp
     @game_manager.add_game(multiplayer, last_played_at, publish_date, first_name, last_name)
     puts "\e[35m"
-    puts " 🎉 Game created successfully! 🎮✨"
+    puts ' 🎉 Game created successfully! 🎮✨'
     puts "\e[34m"
+  end
+
+  def exit_msg
+    puts "\e[35m"
+    puts '🎉 Thank you for exploring our library, music collection, and game center! 📚 🎶 🎮'
+    puts '🌟 We hope you had a fantastic time with us! 🌟'
+    puts "\e[37m"
   end
 end
 display_header
