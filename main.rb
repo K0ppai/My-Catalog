@@ -28,6 +28,9 @@ class Main
 
   def run
     @retrieve_data.retrieve_all(@game_manager, @music_album_manager)
+    puts ''
+    puts 'WELCOME TO MY-CATALOG APP'
+    puts ''
     loop do
       display_options
       number = gets.chomp.to_i
