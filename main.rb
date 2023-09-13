@@ -122,7 +122,7 @@ class Main
     puts 'Finally, what color label should it have?'
     color = gets.chomp
     @book_manager.add_book(publish_date, publisher, cover_state, title, color)
-    puts ""
+    puts ''
     puts "\e[35m 🎉 Book created successfully! 📖 ✨"
     puts "\e[34m"
   end
