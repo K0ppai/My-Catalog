@@ -10,8 +10,9 @@ class LabelManager
     @labels.map { |label| puts "#{label.color}, #{label.title}" }
   end
 
-  def add_label(title, color)
+  def add_label(item, title, color)
     new_label = Label.new(title, color)
+    new_label.add_item(item)
     @labels << new_label
   end
 end
