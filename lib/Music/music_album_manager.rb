@@ -39,7 +39,6 @@ class MusicAlbumManager
         print "#{index}) "
         puts album.genre.name.upcase
       end
-
     end
     puts "\e[34m"
   end
@@ -73,7 +72,7 @@ class MusicAlbumManager
       puts "Choose the number of the album..\n"
       list_music_albums
       break if @albums.empty?
-      
+
       index = gets.chomp.to_i
       if index.positive? && index <= @albums.length
         @albums.delete_at(index - 1)
