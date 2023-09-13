@@ -11,19 +11,20 @@ class MusicAlbumManager
   def list_music_albums
     puts 'There is no albums yet.' if @albums.empty?
     @albums.each_with_index do |album, _index|
-      puts "Genre: #{album.genre.name}, Published Date:#{album.publish_date}, #{album.on_spotify ? 'Available on Spotify' : 'Not Available on Spotify'}"
+      puts "Genre: \"#{album.genre.name.upcase}\", Published Date:#{album.publish_date}, On Spotify?: #{album.on_spotify ? 'Yes' : 'No'}"
     end
   end
 
   def list_genres
-    puts 'There is no genres yet.' if @albums.empty?
-    @albums.each_with_index do |album, _index|
-      puts album.genre.name
+    puts 'There is no genres yet. Please create one.' if @albums.empty?
+    @albums.each_with_index do |album, index|
+      print "#{index}) "
+      puts album.genre.name.upcase
     end
   end
 
   def create_music_album
-    puts 'When is it published? Enter data in [yy/mm/dd] format.'
+    puts 'When is it published? (Enter date in [yy/mm/dd] format)'
     publish_date = gets.chomp
     puts 'Is it on Spotify? [Y/N]: '
     on_spotify = gets.chomp.upcase
