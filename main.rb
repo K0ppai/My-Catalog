@@ -39,7 +39,7 @@ class Main
   end
 
   def run
-    @retrieve_data.retrieve_all(@game_manager, @music_album_manager)
+    @retrieve_data.retrieve_all(@game_manager, @music_album_manager, @book_manager)
     selected_option = nil
     loop do
       system('clear')
@@ -47,7 +47,7 @@ class Main
       number = gets.chomp.to_i
       selected_option = number
       if number == 10
-        @store_data.store_all(@game_manager, @music_album_manager)
+        @store_data.store_all(@game_manager, @music_album_manager, @book_manager)
         exit_msg
         break
       end
