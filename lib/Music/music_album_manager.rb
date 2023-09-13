@@ -36,7 +36,7 @@ class MusicAlbumManager
       puts 'Here is the Genre List 🎶 📀'
       puts "\e[37m"
       @albums.each_with_index do |album, index|
-        print "#{index}) "
+        print "#{index + 1}) "
         puts album.genre.name.upcase
       end
     end

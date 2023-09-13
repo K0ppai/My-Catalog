@@ -10,7 +10,7 @@ class RetrieveData
   end
 
   def retrieve_games(game_manager)
-    return if File.empty?('lib/Data/JSON/games.json')
+    File.write('lib/Data/JSON/games.json', JSON.pretty_generate([])) unless File.exist?('lib/Data/JSON/games.json')
 
     file = File.read('lib/Data/JSON/games.json')
     data = JSON.parse(file, symbolize_names: true)
@@ -41,14 +41,13 @@ class RetrieveData
 
   def retrieve_books(books_manager)
     books = []
-    return books unless File.exist?('./lib/Data/JSON/books.json')
+    File.write('lib/Data/JSON/books.json', JSON.pretty_generate(books)) unless File.exist?('./lib/Data/JSON/books.json')
 
     json = File.read('./lib/Data/JSON/books.json')
     data = JSON.parse(json)
 
     data.map do |data_item|
-      books_manager.add_book(data_item['publish_date'], data_item['publisher'],
-                             data_item['cover_state'], data_item['title'], data_item['color'])
+      books_manager.add_book(data_item['publish_date'], data_item['publisher'], data_item['cover_state'], data_item['title'], data_item['color'])
     end
   end
 end
