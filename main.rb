@@ -4,6 +4,18 @@ require_relative 'lib/Game/Managers/game_manager'
 require_relative 'lib/Data/store_data'
 require_relative 'lib/Data/retrieve_data'
 
+def display_header
+  puts "\e[35m" # Set the text color to purple
+  puts '***********************************************************'
+  puts '  📚 🎶 🎮  Welcome to My-Catalog Console App  🎮 🎶 📚  '
+  puts '***********************************************************'
+  puts ''
+  puts '🌟 Get ready to 🌍 explore, 🕵️‍♂️ discover, and 🚀 have a blast! 🎉'
+  puts ''
+  puts '🤔 What would you like to do today? 🤖'
+  puts "\e[34m"
+end
+
 ACTIONS = {
   1 => { method: :list_books },
   2 => { method: :list_music_albums },
@@ -29,20 +41,18 @@ class Main
 
   def run
     @retrieve_data.retrieve_all(@game_manager, @music_album_manager, @book_manager)
-    puts ''
-    puts 'WELCOME TO MY-CATALOG APP'
-    puts ''
+    selected_option = nil
     loop do
-      display_options
+      system('clear')
+      display_options(selected_option)
       number = gets.chomp.to_i
-      if number == 11
+      selected_option = number
+      if number.zero?
         @store_data.store_all(@game_manager, @music_album_manager, @book_manager)
-        puts 'Saved Successfully!'
-        puts 'Thank you for using this app'
+        exit_msg
         break
       end
       action = ACTIONS[number]
-
       if action
         send(action[:method])
       else
@@ -52,24 +62,32 @@ class Main
     end
   end
 
-  def display_options
-    puts 'Please choose an option by entering a number:'
-    puts '1 - List all books'
-    puts '2 - List all music albums'
-    puts '3 - List of games'
-    puts '4 - List all genres'
-    puts '5 - List all labels'
-    puts '6 - List all authors'
-    puts '7 - Add a book'
-    puts '8 - Add a music album'
-    puts '9 - Add a game'
-    puts '10 - Remove a music album'
-    puts '11 - Exit'
+  def display_options(selected_option)
+    options = [
+      '1️⃣   List all books 📚',
+      '2️⃣   List all music albums 🎶 📀',
+      '3️⃣   List of games 🎮',
+      '4️⃣   List all genres  🎵 🎶',
+      '5️⃣   List all labels 🏷️  📚',
+      '6️⃣   List all authors ✍️  📖',
+      '7️⃣   Add a book 📚 ✏️',
+      '8️⃣   Add a music album 🎶 📀 🎵',
+      '9️⃣   Add a game 🎮 🕹️',
+      '🔟  Remove an album',
+      '0️⃣   Exit 🚪 👋'
+    ]
+
+    options.each_with_index do |option, index|
+      if (index + 1) == selected_option
+        puts "\e[34m👉 #{option}"
+      else
+        puts option
+      end
+    end
+    print "\e[37mEnter Code: "
   end
 
-  # Defined methods for each action here
   def list_books
-    puts "Here's Our Book List"
     @book_manager.list_all_books
   end
 
@@ -86,7 +104,6 @@ class Main
   end
 
   def list_labels
-    puts 'Here is the Labels List'
     @book_manager.list_all_labels
   end
 
@@ -106,6 +123,9 @@ class Main
     puts 'Finally, what color label should it have?'
     color = gets.chomp
     @book_manager.add_book(publish_date, publisher, cover_state, title, color)
+    puts ''
+    puts "\e[35m 🎉 Book created successfully! 📖 ✨"
+    puts "\e[34m"
   end
 
   def add_music_album
@@ -113,26 +133,35 @@ class Main
   end
 
   def add_game
-    print 'multiplayer [true/false]: '
+    puts 'Great Choice, is the game Multiplayer? [yes/no]'
     input = gets.chomp
-    multiplayer = input == 'true'
-    print 'published at [yy-mm-dd]: '
+    multiplayer = input == 'yes'
+    print 'When was it pubished? Enter a Date [yy-mm-dd]: '
     publish_date = gets.chomp
-    print 'last played at [yy-mm-dd]: '
+    print 'When was it last played? Enter a Date [yy-mm-dd]: '
     last_played_at = gets.chomp
-    puts 'Add author of game'
+    puts 'Finally, what author should it have?'
     print 'First name: '
     first_name = gets.chomp
     print 'Last name: '
     last_name = gets.chomp
     @game_manager.add_game(multiplayer, last_played_at, publish_date, first_name, last_name)
-    puts 'Game created successfully'
+    puts "\e[35m"
+    puts ' 🎉 Game created successfully! 🎮✨'
+    puts "\e[34m"
   end
 
   def remove_music_album
     @music_album_manager.remove_album
   end
-end
 
+  def exit_msg
+    puts "\e[35m"
+    puts '🎉 Thank you for exploring our library, music collection, and game center! 📚 🎶 🎮'
+    puts '🌟 We hope you had a fantastic time with us! 🌟'
+    puts "\e[37m"
+  end
+end
+display_header
 main = Main.new
 main.run

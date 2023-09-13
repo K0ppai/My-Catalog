@@ -9,19 +9,39 @@ class MusicAlbumManager
   end
 
   def list_music_albums
-    puts 'There is no albums yet.' if @albums.empty?
-    @albums.each_with_index do |album, index|
-      print "#{index + 1}) "
-      puts "Genre: \"#{album.genre.name.upcase}\", Published Date:#{album.publish_date}, On Spotify?: #{album.on_spotify ? 'Yes' : 'No'}"
+    puts "\e[37m"
+    if @albums == []
+      puts "🎶 Oops! 😬 It seems we don't have albums yet "
+      puts "But don't worry, you can create your own! ✨  🖋️"
+      puts "Go ahead and add a music to your library 📀 \e[34m"
+    else
+      puts "\e[35m Here is the Album List 🎶 📀"
+      puts ''
+      @albums.each_with_index do |album, index|
+        print "\e[37m #{index + 1}) "
+        puts "Genre: \"#{album.genre.name.upcase}\", Published Date:#{album.publish_date}, On Spotify?: #{album.on_spotify ? 'Yes' : 'No'}\e[34m"
+      end
     end
+    puts ''
   end
 
   def list_genres
-    puts 'There is no genres yet. Please create one.' if @albums.empty?
-    @albums.each_with_index do |album, index|
-      print "#{index + 1}) "
-      puts album.genre.name.upcase
+    if @albums == []
+      puts ''
+      puts "🎶 Oops! 😬 It seems we don't have genre yet "
+      puts "But don't worry, you can create your own! ✨  🖋️"
+      puts 'Go ahead and add a music and genre to your library 📀'
+    else
+      puts "\e[35m"
+      puts 'Here is the Genre List 🎶 📀'
+      puts "\e[37m"
+      @albums.each_with_index do |album, index|
+        print "#{index}) "
+        puts album.genre.name.upcase
+      end
+
     end
+    puts "\e[34m"
   end
 
   def create_music_album
@@ -42,11 +62,15 @@ class MusicAlbumManager
     genre = Genre.new(genre_name)
     music_album.genre = genre
     @albums << music_album
-    puts "Music Album [Genre: \"#{music_album.genre.name.upcase}\", Published Date: #{music_album.publish_date}, On Spotify?: #{music_album.on_spotify ? 'Yes' : 'No'}] Created Successfully!"
+    puts "Music Album [Genre: \"#{music_album.genre.name.upcase}\", Published Date: #{music_album.publish_date}, On Spotify?: #{music_album.on_spotify ? 'Yes' : 'No'}]"
+    puts "\e[35m"
+    puts ' 🎉 Music Album Created Successfully! 🎮 🎶'
+    puts "\e[34m"
   end
 
   def remove_album
     loop do
+      puts "\e[35m"
       puts "Choose the number of the album..\n"
       list_music_albums
       index = gets.chomp.to_i
