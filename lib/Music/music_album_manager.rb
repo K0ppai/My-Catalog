@@ -38,6 +38,7 @@ class MusicAlbumManager
         print "#{index}) "
         puts album.genre.name.upcase
       end
+
     end
     puts "\e[34m"
   end
@@ -60,8 +61,26 @@ class MusicAlbumManager
     genre = Genre.new(genre_name)
     music_album.genre = genre
     @albums << music_album
+
     puts "\e[35m"
     puts ' 🎉 Music Album Created Successfully! 🎮 🎶'
     puts "\e[34m"
+
+    puts "Music Album [Genre: \"#{music_album.genre.name.upcase}\", Published Date: #{music_album.publish_date}, On Spotify?: #{music_album.on_spotify ? 'Yes' : 'No'}] Created Successfully!"
+  end
+
+  def remove_album
+    loop do
+      puts "Choose the number of the album..\n"
+      list_music_albums
+      index = gets.chomp.to_i
+      if index.positive? && index <= @albums.length
+        @albums.delete_at(index - 1)
+        puts "Album \"#{index}\" deleted successfully!"
+        break
+      else
+        puts 'Please enter a valid number!'
+      end
+    end
   end
 end

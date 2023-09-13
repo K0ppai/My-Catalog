@@ -26,7 +26,8 @@ ACTIONS = {
   7 => { method: :add_book },
   8 => { method: :add_music_album },
   9 => { method: :add_game },
-  10 => { method: :exit_app }
+  10 => { method: :remove_music_album },
+  11 => { method: :exit_app }
 }.freeze
 
 class Main
@@ -39,7 +40,6 @@ class Main
   end
 
   def run
-<<<<<<<<< Temporary merge branch 1
     @retrieve_data.retrieve_all(@game_manager, @music_album_manager, @book_manager)
     selected_option = nil
     loop do
@@ -48,7 +48,6 @@ class Main
       number = gets.chomp.to_i
       selected_option = number
       if number == 10
-<<<<<<<<< Temporary merge branch 1
         @store_data.store_all(@game_manager, @music_album_manager, @book_manager)
         exit_msg
         break
@@ -59,6 +58,7 @@ class Main
       else
         puts 'Enter a valid number'
       end
+      puts ''
     end
   end
 
@@ -149,6 +149,11 @@ class Main
     puts ' 🎉 Game created successfully! 🎮✨'
     puts "\e[34m"
   end
+
+  def remove_music_album
+    @music_album_manager.remove_album
+  end
+end
 
   def exit_msg
     puts "\e[35m"
