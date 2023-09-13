@@ -47,7 +47,7 @@ class Main
       display_options(selected_option)
       number = gets.chomp.to_i
       selected_option = number
-      if number == 10
+      if number == 0
         @store_data.store_all(@game_manager, @music_album_manager, @book_manager)
         exit_msg
         break
@@ -73,7 +73,8 @@ class Main
       '7️⃣   Add a book 📚 ✏️',
       '8️⃣   Add a music album 🎶 📀 🎵',
       '9️⃣   Add a game 🎮 🕹️',
-      '🔟  Exit 🚪 👋'
+      '🔟  Remove an album',
+      '0️⃣   Exit 🚪 👋'
     ]
 
     options.each_with_index do |option, index|
