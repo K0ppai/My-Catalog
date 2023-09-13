@@ -28,7 +28,7 @@ class Main
   end
 
   def run
-    @retrieve_data.retrieve_all(@game_manager, @music_album_manager)
+    @retrieve_data.retrieve_all(@game_manager, @music_album_manager, @book_manager)
     puts ''
     puts 'WELCOME TO MY-CATALOG APP'
     puts ''
@@ -36,7 +36,7 @@ class Main
       display_options
       number = gets.chomp.to_i
       if number == 11
-        @store_data.store_all(@game_manager, @music_album_manager)
+        @store_data.store_all(@game_manager, @music_album_manager, @book_manager)
         puts 'Saved Successfully!'
         puts 'Thank you for using this app'
         break
@@ -67,16 +67,14 @@ class Main
     puts '11 - Exit'
   end
 
-  # Define methods for each action here
+  # Defined methods for each action here
   def list_books
     puts "Here's Our Book List"
     @book_manager.list_all_books
-    # Implement the logic for listing books
   end
 
   def list_music_albums
     @music_album_manager.list_music_albums
-    # Implement the logic for listing music albums
   end
 
   def list_games
@@ -85,13 +83,11 @@ class Main
 
   def list_genres
     @music_album_manager.list_genres
-    # Implement the logic for listing genres
   end
 
   def list_labels
     puts 'Here is the Labels List'
     @book_manager.list_all_labels
-    # Implement the logic for listing labels
   end
 
   def list_authors
@@ -110,12 +106,10 @@ class Main
     puts 'Finally, what color label should it have?'
     color = gets.chomp
     @book_manager.add_book(publish_date, publisher, cover_state, title, color)
-    # Implement the logic for adding a book
   end
 
   def add_music_album
     @music_album_manager.create_music_album
-    # Implement the logic for adding a music album
   end
 
   def add_game

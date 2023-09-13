@@ -17,9 +17,14 @@ class BookManager
     end
   end
 
+  def booklist
+    @books
+  end
+
   def add_book(publish_date, publisher, cover_state, title, color)
     new_book = Book.new(publish_date, publisher, cover_state)
-    @labels.add_label(title, color)
+    new_book.label = Label.new(title, color)
+    @labels.add_label(new_book, title, color)
     @books << new_book
     puts "Book created successfully!
     Publish date: #{new_book.publish_date}, Publisher: #{new_book.publisher}, Cover State: #{new_book.cover_state}"
