@@ -47,7 +47,7 @@ class MusicAlbumManager
 
   def remove_album
     loop do
-      puts "Choose id of the album..\n"
+      puts "Choose the number of the album..\n"
       list_music_albums
       index = gets.chomp.to_i
       if index.positive? && index <= @albums.length
@@ -55,7 +55,7 @@ class MusicAlbumManager
         puts "Album \"#{index}\" deleted successfully!"
         break
       else
-        puts 'Please enter a valid id!'
+        puts 'Please enter a valid number!'
       end
     end
   end
