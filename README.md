@@ -62,7 +62,7 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-Video Presentation:[https://youtu.be/uI7x7itNxyg]
+[Video Presentation](https://youtu.be/uI7x7itNxyg)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
