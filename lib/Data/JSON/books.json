@@ -1,0 +1,23 @@
+[
+  {
+    "publish_date": "2023-03-03",
+    "publisher": "Houser",
+    "cover_state": "bad",
+    "title": "New",
+    "color": "red"
+  },
+  {
+    "publish_date": "1994-05-24",
+    "publisher": "JK Rowling",
+    "cover_state": "excellent",
+    "title": "Antique",
+    "color": "Blue"
+  },
+  {
+    "publish_date": "2003-05-23",
+    "publisher": "yang",
+    "cover_state": "excellent",
+    "title": "new",
+    "color": "black"
+  }
+]
