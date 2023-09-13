@@ -69,10 +69,10 @@ class MusicAlbumManager
   def remove_album
     loop do
       puts "\e[35m"
-      puts "Choose the number of the album..\n"
       list_music_albums
       break if @albums.empty?
 
+      puts "Choose the number of the album..\n"
       index = gets.chomp.to_i
       if index.positive? && index <= @albums.length
         @albums.delete_at(index - 1)
