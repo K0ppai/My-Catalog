@@ -1,5 +1,5 @@
-require_relative "music_album"
-require_relative "genre"
+require_relative 'music_album'
+require_relative 'genre'
 
 class MusicAlbumManager
   attr_reader :albums
@@ -9,15 +9,15 @@ class MusicAlbumManager
   end
 
   def list_music_albums
-    puts "There is no albums yet." if @albums.empty?
+    puts 'There is no albums yet.' if @albums.empty?
     @albums.each_with_index do |album, index|
       print "#{index + 1}) "
-      puts "Genre: \"#{album.genre.name.upcase}\", Published Date:#{album.publish_date}, On Spotify?: #{album.on_spotify ? "Yes" : "No"}"
+      puts "Genre: \"#{album.genre.name.upcase}\", Published Date:#{album.publish_date}, On Spotify?: #{album.on_spotify ? 'Yes' : 'No'}"
     end
   end
 
   def list_genres
-    puts "There is no genres yet. Please create one." if @albums.empty?
+    puts 'There is no genres yet. Please create one.' if @albums.empty?
     @albums.each_with_index do |album, index|
       print "#{index + 1}) "
       puts album.genre.name.upcase
@@ -25,24 +25,24 @@ class MusicAlbumManager
   end
 
   def create_music_album
-    puts "When is it published? (Enter date in [yy/mm/dd] format)"
+    puts 'When is it published? (Enter date in [yy/mm/dd] format)'
     publish_date = gets.chomp
-    puts "Is it on Spotify? [Y/N]: "
+    puts 'Is it on Spotify? [Y/N]: '
     on_spotify = gets.chomp.upcase
     case on_spotify
-    when "Y"
+    when 'Y'
       music_album = MusicAlbum.new(publish_date, true)
-    when "N"
+    when 'N'
       music_album = MusicAlbum.new(publish_date, false)
     else
-      puts "Please enter a valid input!"
+      puts 'Please enter a valid input!'
     end
-    puts "What is the Genre? "
+    puts 'What is the Genre? '
     genre_name = gets.chomp
     genre = Genre.new(genre_name)
     music_album.genre = genre
     @albums << music_album
-    puts "Music Album [Genre: \"#{music_album.genre.name.upcase}\", Published Date: #{music_album.publish_date}, On Spotify?: #{music_album.on_spotify ? "Yes" : "No"}] Created Successfully!"
+    puts "Music Album [Genre: \"#{music_album.genre.name.upcase}\", Published Date: #{music_album.publish_date}, On Spotify?: #{music_album.on_spotify ? 'Yes' : 'No'}] Created Successfully!"
   end
 
   def remove_album

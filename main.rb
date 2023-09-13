@@ -1,8 +1,8 @@
-require_relative "lib/Book/book_manager"
-require_relative "lib/Music/music_album_manager"
-require_relative "lib/Game/Managers/game_manager"
-require_relative "lib/Data/store_data"
-require_relative "lib/Data/retrieve_data"
+require_relative 'lib/Book/book_manager'
+require_relative 'lib/Music/music_album_manager'
+require_relative 'lib/Game/Managers/game_manager'
+require_relative 'lib/Data/store_data'
+require_relative 'lib/Data/retrieve_data'
 
 ACTIONS = {
   1 => { method: :list_books },
@@ -15,7 +15,7 @@ ACTIONS = {
   8 => { method: :add_music_album },
   9 => { method: :add_game },
   10 => { method: :remove_music_album },
-  11 => { method: :exit_app },
+  11 => { method: :exit_app }
 }.freeze
 
 class Main
@@ -29,42 +29,42 @@ class Main
 
   def run
     @retrieve_data.retrieve_all(@game_manager, @music_album_manager)
-    puts ""
-    puts "WELCOME TO MY-CATALOG APP"
-    puts ""
+    puts ''
+    puts 'WELCOME TO MY-CATALOG APP'
+    puts ''
     loop do
       display_options
       number = gets.chomp.to_i
       if number == 11
         @store_data.store_all(@game_manager, @music_album_manager)
-        puts "Saved Successfully!"
-        puts "Thank you for using this app"
+        puts 'Saved Successfully!'
+        puts 'Thank you for using this app'
         break
       end
       action = ACTIONS[number]
-      
+
       if action
         send(action[:method])
       else
-        puts "Enter a valid number"
+        puts 'Enter a valid number'
       end
-      puts ""
+      puts ''
     end
   end
 
   def display_options
-    puts "Please choose an option by entering a number:"
-    puts "1 - List all books"
-    puts "2 - List all music albums"
-    puts "3 - List of games"
-    puts "4 - List all genres"
-    puts "5 - List all labels"
-    puts "6 - List all authors"
-    puts "7 - Add a book"
-    puts "8 - Add a music album"
-    puts "9 - Add a game"
-    puts "10 - Remove a music album"
-    puts "11 - Exit"
+    puts 'Please choose an option by entering a number:'
+    puts '1 - List all books'
+    puts '2 - List all music albums'
+    puts '3 - List of games'
+    puts '4 - List all genres'
+    puts '5 - List all labels'
+    puts '6 - List all authors'
+    puts '7 - Add a book'
+    puts '8 - Add a music album'
+    puts '9 - Add a game'
+    puts '10 - Remove a music album'
+    puts '11 - Exit'
   end
 
   # Define methods for each action here
@@ -89,7 +89,7 @@ class Main
   end
 
   def list_labels
-    puts "Here is the Labels List"
+    puts 'Here is the Labels List'
     @book_manager.list_all_labels
     # Implement the logic for listing labels
   end
@@ -99,15 +99,15 @@ class Main
   end
 
   def add_book
-    puts "Great Choice, what is the state of the Book? [excellent/good/bad]"
+    puts 'Great Choice, what is the state of the Book? [excellent/good/bad]'
     cover_state = gets.chomp
-    puts "When was it pubished? Enter a Date"
+    puts 'When was it pubished? Enter a Date'
     publish_date = gets.chomp
-    puts "Who was the publisher"
+    puts 'Who was the publisher'
     publisher = gets.chomp
-    puts "Tell us about the book in 1 word Eg. Gift/New/Antique/Rare/Ancient"
+    puts 'Tell us about the book in 1 word Eg. Gift/New/Antique/Rare/Ancient'
     title = gets.chomp
-    puts "Finally, what color label should it have?"
+    puts 'Finally, what color label should it have?'
     color = gets.chomp
     @book_manager.add_book(publish_date, publisher, cover_state, title, color)
     # Implement the logic for adding a book
@@ -119,20 +119,20 @@ class Main
   end
 
   def add_game
-    print "multiplayer [true/false]: "
+    print 'multiplayer [true/false]: '
     input = gets.chomp
-    multiplayer = input == "true"
-    print "published at [yy-mm-dd]: "
+    multiplayer = input == 'true'
+    print 'published at [yy-mm-dd]: '
     publish_date = gets.chomp
-    print "last played at [yy-mm-dd]: "
+    print 'last played at [yy-mm-dd]: '
     last_played_at = gets.chomp
-    puts "Add author of game"
-    print "First name: "
+    puts 'Add author of game'
+    print 'First name: '
     first_name = gets.chomp
-    print "Last name: "
+    print 'Last name: '
     last_name = gets.chomp
     @game_manager.add_game(multiplayer, last_played_at, publish_date, first_name, last_name)
-    puts "Game created successfully"
+    puts 'Game created successfully'
   end
 
   def remove_music_album
