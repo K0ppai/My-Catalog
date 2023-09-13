@@ -120,6 +120,9 @@ class Main
     puts 'Finally, what color label should it have?'
     color = gets.chomp
     @book_manager.add_book(publish_date, publisher, cover_state, title, color)
+    puts "\e[35m 🎉 Book created successfully! 📖 ✨
+    \e[37m Publish date: #{new_book.publish_date}, Publisher: #{new_book.publisher}, Cover State: #{new_book.cover_state}"
+    puts "\e[34m"
   end
 
   def add_music_album

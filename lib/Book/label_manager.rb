@@ -12,8 +12,9 @@ class LabelManager
       puts "But don't worry, you can be the label master and create your own! ✨  🖋️"
       puts 'Go ahead and add a label to your favorite book or music album. 📖  🎶'
     else
+      puts "\e[35m"
+      puts 'Here is the Labels List 🏷️ 📚'
       puts "\e[37m"
-      puts 'Here is the Labels List'
       @labels.map { |label| puts "\e[37m #{label.color}, #{label.title}\e[34m" }
     end
     puts "\e[34m"

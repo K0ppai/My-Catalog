@@ -12,7 +12,7 @@ class AuthorManager
       puts 'Go ahead and add a your game and author. 🎮'
     else
       puts "\e[35m"
-      puts ' Here is the Author List '
+      puts ' Here is the Author List ✍️'
       puts ''
       @all_authors.each do |author|
         puts "\e[37m First name: \"#{author.first_name}\", Last name: \"#{author.last_name}\""

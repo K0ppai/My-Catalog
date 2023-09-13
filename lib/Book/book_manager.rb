@@ -15,7 +15,7 @@ class BookManager
       puts 'Go ahead and add a book to your library 📖'
     else
       puts "\e[35m"
-      puts 'Here is the Books List'
+      puts 'Here is the Books List 📚'
       puts "\e[37m"
       @books.map do |book|
         puts "Publish date: #{book.publish_date}, Publisher: #{book.publisher}, Cover State: #{book.cover_state}"
@@ -33,9 +33,6 @@ class BookManager
     new_book.label = Label.new(title, color)
     @labels.add_label(new_book, title, color)
     @books << new_book
-    puts "\e[35m 🎉 Book created successfully! 📖 ✨
-    \e[37m Publish date: #{new_book.publish_date}, Publisher: #{new_book.publisher}, Cover State: #{new_book.cover_state}"
-    puts "\e[34m"
   end
 
   def list_all_labels
