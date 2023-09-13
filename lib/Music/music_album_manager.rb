@@ -10,7 +10,8 @@ class MusicAlbumManager
 
   def list_music_albums
     puts 'There is no albums yet.' if @albums.empty?
-    @albums.each_with_index do |album, _index|
+    @albums.each_with_index do |album, index|
+      print "#{index + 1}) "
       puts "Genre: \"#{album.genre.name.upcase}\", Published Date:#{album.publish_date}, On Spotify?: #{album.on_spotify ? 'Yes' : 'No'}"
     end
   end
@@ -18,7 +19,7 @@ class MusicAlbumManager
   def list_genres
     puts 'There is no genres yet. Please create one.' if @albums.empty?
     @albums.each_with_index do |album, index|
-      print "#{index}) "
+      print "#{index + 1}) "
       puts album.genre.name.upcase
     end
   end
@@ -41,6 +42,21 @@ class MusicAlbumManager
     genre = Genre.new(genre_name)
     music_album.genre = genre
     @albums << music_album
-    puts 'Music Album Created Successfully!'
+    puts "Music Album [Genre: \"#{music_album.genre.name.upcase}\", Published Date: #{music_album.publish_date}, On Spotify?: #{music_album.on_spotify ? 'Yes' : 'No'}] Created Successfully!"
+  end
+
+  def remove_album
+    loop do
+      puts "Choose the number of the album..\n"
+      list_music_albums
+      index = gets.chomp.to_i
+      if index.positive? && index <= @albums.length
+        @albums.delete_at(index - 1)
+        puts "Album \"#{index}\" deleted successfully!"
+        break
+      else
+        puts 'Please enter a valid number!'
+      end
+    end
   end
 end

@@ -14,7 +14,8 @@ ACTIONS = {
   7 => { method: :add_book },
   8 => { method: :add_music_album },
   9 => { method: :add_game },
-  10 => { method: :exit_app }
+  10 => { method: :remove_music_album },
+  11 => { method: :exit_app }
 }.freeze
 
 class Main
@@ -34,7 +35,7 @@ class Main
     loop do
       display_options
       number = gets.chomp.to_i
-      if number == 10
+      if number == 11
         @store_data.store_all(@game_manager, @music_album_manager, @book_manager)
         puts 'Saved Successfully!'
         puts 'Thank you for using this app'
@@ -47,6 +48,7 @@ class Main
       else
         puts 'Enter a valid number'
       end
+      puts ''
     end
   end
 
@@ -61,7 +63,8 @@ class Main
     puts '7 - Add a book'
     puts '8 - Add a music album'
     puts '9 - Add a game'
-    puts '10 - Exit'
+    puts '10 - Remove a music album'
+    puts '11 - Exit'
   end
 
   # Defined methods for each action here
@@ -124,6 +127,10 @@ class Main
     last_name = gets.chomp
     @game_manager.add_game(multiplayer, last_played_at, publish_date, first_name, last_name)
     puts 'Game created successfully'
+  end
+
+  def remove_music_album
+    @music_album_manager.remove_album
   end
 end
 
