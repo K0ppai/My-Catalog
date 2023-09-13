@@ -162,6 +162,7 @@ class Main
     puts "\e[37m"
   end
 end
+
 display_header
 main = Main.new
 main.run

@@ -36,10 +36,9 @@ class MusicAlbumManager
       puts 'Here is the Genre List 🎶 📀'
       puts "\e[37m"
       @albums.each_with_index do |album, index|
-        print "#{index}) "
+        print "#{index + 1}) "
         puts album.genre.name.upcase
       end
-
     end
     puts "\e[34m"
   end
@@ -62,19 +61,18 @@ class MusicAlbumManager
     genre = Genre.new(genre_name)
     music_album.genre = genre
     @albums << music_album
-    puts "Music Album [Genre: \"#{music_album.genre.name.upcase}\", Published Date: #{music_album.publish_date}, On Spotify?: #{music_album.on_spotify ? 'Yes' : 'No'}]"
     puts "\e[35m"
-    puts ' 🎉 Music Album Created Successfully! 🎮 🎶'
+    puts " 🎉 Music Album [Genre: \"#{music_album.genre.name.upcase}\", Published Date: #{music_album.publish_date}, On Spotify?: #{music_album.on_spotify ? 'Yes' : 'No'}] Created Successfully! 🎮 🎶"
     puts "\e[34m"
   end
 
   def remove_album
     loop do
       puts "\e[35m"
-      puts "Choose the number of the album..\n"
       list_music_albums
       break if @albums.empty?
-      
+
+      puts "Choose the number of the album..\n"
       index = gets.chomp.to_i
       if index.positive? && index <= @albums.length
         @albums.delete_at(index - 1)
