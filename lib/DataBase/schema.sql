@@ -1,25 +1,25 @@
-CREATE TABLE item(
+CREATE TABLE items(
  id INT GENERATED ALWAYS AS IDENTITY,
- genre_id INT REFERENCES genre(id),
- author_id INT REFERENCES author(id),
- label_id INT REFERENCES label(id),
+ genre_id INT REFERENCES genres(id),
+ author_id INT REFERENCES authors(id),
+ label_id INT REFERENCES labels(id),
  publish_date DATE,
- archived boolean
+ archived boolean,
  PRIMARY KEY (id));
 
- CREATE TABLE game(
+ CREATE TABLE games(
   id INT GENERATED ALWAYS AS IDENTITY,
   multiplayer boolean,
   last_played_at DATE,
-  genre_id INT REFERENCES genre(id),
-  author_id INT REFERENCES author(id),
-  label_id INT REFERENCES label(id),
+  genre_id INT REFERENCES genres(id),
+  author_id INT REFERENCES authors(id),
+  label_id INT REFERENCES labels(id),
   publish_date DATE,
   archived boolean,
   PRIMARY KEY (id)
  );
 
- CREATE TABLE author(
+ CREATE TABLE authors(
    id INT GENERATED ALWAYS AS IDENTITY,
    first_name VARCHAR(250)
    last_name VARCHAR(250)
@@ -36,9 +36,9 @@ CREATE TABLE
     publish_date DATE,
     archived BOOLEAN,
     PRIMARY KEY (id),
-    CONSTRAINT fk_genre_id FOREIGN KEY (genre_id) REFERENCES genres (id),
-    CONSTRAINT fk_label_id FOREIGN KEY (label_id) REFERENCES labels (id),
-    CONSTRAINT fk_author_id FOREIGN KEY (author_id) REFERENCES authors (id)
+    CONSTRAINT fk_genre_id FOREIGN KEY (genre_id) REFERENCES genres(id),
+    CONSTRAINT fk_label_id FOREIGN KEY (label_id) REFERENCES labels(id),
+    CONSTRAINT fk_author_id FOREIGN KEY (author_id) REFERENCES authors(id)
   );
 
 CREATE TABLE
@@ -47,3 +47,26 @@ CREATE TABLE
     name VARCHAR(255),
     PRIMARY KEY (id)
   );
+
+  CREATE TABLE books(
+    id INT GENERATED ALWAYS AS IDENTITY,
+    publisher VARCHAR(20),
+    cover_state VARCHAR(20),
+    publish_date DATE,
+    archived boolean,
+    genre_id INT, 
+    author_id INT,
+    label_id INT, 
+    PRIMARY KEY (id),
+    CONSTRAINT fk_genre_id FOREIGN KEY(genre_id) REFERENCES genres(id),
+    CONSTRAINT fk_author_id FOREIGN KEY(author_id) REFERENCES authors(id),
+    CONSTRAINT fk_label_id FOREIGN KEY(label_id) REFERENCES labels(id),
+    
+  )
+
+  CREATE TABLE labels(
+    id INT GENERATED ALWAYS AS IDENTITY,
+    title VARCHAR(30)
+    color VARCHAR(20)
+    PRIMARY KEY (id)
+  )
