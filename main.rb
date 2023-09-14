@@ -43,7 +43,6 @@ class Main
     @retrieve_data.retrieve_all(@game_manager, @music_album_manager, @book_manager)
     selected_option = nil
     loop do
-      system('clear')
       display_options(selected_option)
       number = gets.chomp.to_i
       selected_option = number
