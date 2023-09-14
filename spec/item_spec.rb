@@ -68,6 +68,5 @@ describe Item do
         expect(@new_item1.author).to eq(author)
       end
     end
-
   end
 end
