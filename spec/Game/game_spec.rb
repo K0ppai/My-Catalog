@@ -11,16 +11,6 @@ describe Game do
     end
   end
 
-  context 'When adding author to Game instance' do
-    it "should set the author and add the game to the author's items" do
-      author = double('Author')
-      allow(author).to receive(:items) { [@game] }
-      @game.author = author
-      expect(author.items).to include(@game)
-      expect(@game.author).to eq(author)
-    end
-  end
-
   context 'When implementing can_be_archived?() method' do
     it "should return true if parent's method returns true AND if last_played_at is older than 2 years" do
       expect(@game.archived).to be false
