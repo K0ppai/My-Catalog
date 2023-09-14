@@ -1,6 +1,5 @@
 require_relative 'spec_helper'
 
-
 describe Item do
   before :all do
     p 'Item testing'
@@ -11,7 +10,6 @@ describe Item do
     @new_item2 = Item.new('2012-09-10')
     @new_item3 = Item.new('2000-12-12')
   end
-
 
   describe '#initialize' do
     context 'When making a new item' do
